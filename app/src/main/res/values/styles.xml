@@ -1,0 +1,51 @@
+<resources>
+    <style name="Body" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#FFFFFF</item>
+    </style>
+    <style name="TextView" parent="@android:style/Widget.TextView">
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:textColor">#555555</item>
+</style>
+    <style name="TextViewSuccess" parent="@android:style/Widget.TextView">
+        <item name="android:textColor">#333333</item>
+    </style>
+    <style name="Button" parent="@android:style/Widget.Button">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@drawable/button</item>
+    </style>
+    <style name="EditText" parent="@android:style/Widget.EditText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textColorHint">#888888</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <style name="EditTextMultiline" parent="@android:style/Widget.EditText">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lines">5</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:textColorHint">#888888</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:background">@drawable/edittext</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:padding">5dp</item>
+    </style>
+    <style name="Well" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">20dip</item>
+        <item name="android:layout_margin">20dip</item>
+        <item name="android:background">@drawable/layout_border</item>
+        <item name="android:layout_centerInParent">false</item>
+    </style>
+</resources>

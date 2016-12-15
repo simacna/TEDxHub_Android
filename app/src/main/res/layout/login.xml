@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Body">
+
+
+    <!-- Login Form -->
+
+    <!--  Container Starts-->
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="20dip"
+        android:layout_alignParentBottom="true">
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/logocontainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="false"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/logo" />
+        </LinearLayout>
+        <!-- Login Form -->
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logocontainer"
+            android:layout_centerInParent="false"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextView"
+                android:layout_marginTop="10dip"
+                android:text="@string/login"
+                android:textStyle="bold" />
+            <!--  Email Label -->
+            <EditText
+                android:id="@+id/text_domain"
+                style="@style/EditText"
+                android:layout_marginTop="10dip"
+                android:hint="community.communifire.com"
+                 />
+
+            <!--  Email Label -->
+            <EditText
+                android:id="@+id/text_name"
+                style="@style/EditText"
+                android:layout_marginTop="10dip"
+                android:hint="@string/username_or_email" />
+
+            <!--  Password Label -->
+            <EditText
+                android:id="@+id/text_password"
+                style="@style/EditText"
+                android:layout_marginTop="10dip"
+                android:hint="@string/password"
+                android:password="true" />
+
+            <!-- Login button -->
+            <Button
+                android:id="@+id/button_login"
+                style="@style/Button"
+                android:layout_marginTop="10dip"
+                android:onClick="onLoginButtonClick"
+                android:text="@string/login" />
+
+        </LinearLayout>
+        <!-- Login Form Ends -->
+    </RelativeLayout>
+    <!--  Container Ends-->
+
+
+</RelativeLayout>

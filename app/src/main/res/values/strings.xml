@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Communifire</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="signin_label">If you have an account, please sign in.</string>
+    <string name="username_or_email">Username or Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="takepicture">Take a Picture</string>
+    <string name="recordvideo">Record a Video</string>
+    <string name="createcase">Create Case</string>
+    <string name="copyright">Copyright © 2013 Axero Solutions LLC.</string>
+    <string name="goback">Go back</string>
+    <string name="proceed">Proceed</string>
+    <string name="pleasewait">Please wait...</string>
+    <string name="submit">Submit</string>
+    <string name="casesubmitted">Your case has been submitted.</string>
+    <string name="enter_valid_credntials">Please enter valid credentials.</string>
+    <string name="enter_valid_url">Please enter a valid url.</string>
+    <string name="newsfeed">Loading content...</string>
+    <string name="heading_notification">Notifications</string>
+    <string name="heading_newsfeed">Activity Ticker</string>
+    <string name="heading_home">Communifire</string>
+    <string name="account">Account</string>
+    <string name="activity_feed">Activity Feed</string>
+    <string name="logout">Logout</string>
+    <string name="home">Home</string>
+    <string name="error_occurred">An error occurred while processing your request. Please try again.</string>
+    <string name="internet_connection_check">Please check your internet connection.</string>
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Home</item>
+        <item >Find People</item>
+        <item >Photos</item>
+        <item >Communities</item>
+        <item >Pages</item>
+        <item >What\'s Hot</item>
+    </string-array>
+</resources>
