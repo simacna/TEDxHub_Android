@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="21.1.2"
-        sha1="62cb3f2598f4352b6a52f7589ddd4004ead36eca">
+        sha1="399ce338ea77088c60bf2443ff2ac89ecea8035a">
         <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f424552d1292a447f5019b98bd9eb59c8656cd8c/classes.dex" />
     </item>
     <item
@@ -36,24 +36,6 @@
         revision="21.1.2"
         sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
         <dex dex="/Git Projects/CommunifireAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-21.0.3_01091d78cb3785f6a76c0572c70700eae83535ac/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Git Projects/TEDxHub_Android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.1.2"
-        sha1="140b0498b19f9f09bb348f9af18987d3e3883764">
-        <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_aa46e972bc27ee573d97af1e69bd0d7dc3c0d5b2/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Git Projects/CommunifireAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.1.2"
-        sha1="638232c9fbd654c09626b0547a1935cd19823e34">
-        <dex dex="/Git Projects/CommunifireAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_92fbb556fedca762882ee1351e89c6d62f4bd15c/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -84,21 +66,39 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Git Projects/TEDxHub_Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="21.1.2"
-        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
-        <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-21.0.3_e7672da1b446d35c4eefff6318f3a09f3b4d183c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/Sunny/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
         jumboMode="true"
         optimize="true"
         revision="21.1.2"
         sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
         <dex dex="/Git Projects/CommunifireAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-21.0.3_9e85353c3e9195738eff11723f93036a251ccd6f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Git Projects/TEDxHub_Android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="4b87aa0967dfab14c023673c6d48d91918946be3">
+        <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_aa46e972bc27ee573d97af1e69bd0d7dc3c0d5b2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Git Projects/CommunifireAndroid/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="638232c9fbd654c09626b0547a1935cd19823e34">
+        <dex dex="/Git Projects/CommunifireAndroid/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_92fbb556fedca762882ee1351e89c6d62f4bd15c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Git Projects/TEDxHub_Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/jars/libs/internal_impl-21.0.3.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-21.0.3_e7672da1b446d35c4eefff6318f3a09f3b4d183c/classes.dex" />
     </item>
 
 </items>

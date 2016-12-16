@@ -88,8 +88,8 @@ public class GetMessages extends AsyncTask<Void, Void, Void> {
                 Notification.Builder nbuilder = new Notification.Builder(Context)
                         .setContentTitle(GlobalNames.NewMessages)
                         .setContentText(session.getAppName())
-                        .setSmallIcon(R.drawable.ic_cf_logo)
-                        .setLargeIcon(BitmapFactory.decodeResource(Context.getResources(), R.drawable.ic_cf_logo))
+                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setLargeIcon(BitmapFactory.decodeResource(Context.getResources(), R.mipmap.ic_launcher))
                         .setContentIntent(pi);
 
 
