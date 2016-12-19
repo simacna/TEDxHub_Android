@@ -3,7 +3,10 @@ package com.axero.communifire;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.util.Patterns;
+import android.webkit.CookieManager;
+import android.webkit.CookieSyncManager;
 
 import org.json.JSONObject;
 
@@ -63,17 +66,9 @@ public final class Utils {
     }
 
     public static String makeUrlFromDomain(String domain) {
-        if (!domain.startsWith("https")) {
+        if (!domain.startsWith("http")) {
 
-            if (domain.startsWith("http")) {
-                StringBuffer buf = new StringBuffer(domain);
-                int index = 4;
-                buf.insert(index, "s");
-                domain = buf.toString();
-            } else if (!domain.startsWith("http")) {
-                domain = String.format("https://%s", domain);
-            }
-            // domain = String.format("https://%s", domain);
+            domain = String.format("http://%s", domain);
         }
 
         if (domain.endsWith("/")) {
@@ -142,5 +137,24 @@ public final class Utils {
 
         return notification;
 
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void clearCookies(Context context)
+    {
+
+        if (Build.VERSION.SDK_INT >= 21) {
+            CookieManager.getInstance().removeAllCookies(null);
+            CookieManager.getInstance().flush();
+        } else
+        {
+            CookieSyncManager cookieSyncMngr=CookieSyncManager.createInstance(context);
+            cookieSyncMngr.startSync();
+            CookieManager cookieManager=CookieManager.getInstance();
+            cookieManager.removeAllCookie();
+            cookieManager.removeSessionCookie();
+            cookieSyncMngr.stopSync();
+            cookieSyncMngr.sync();
+        }
     }
 }

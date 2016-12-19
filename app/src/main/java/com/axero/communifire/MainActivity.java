@@ -50,6 +50,7 @@ public class MainActivity extends Activity {
     private Context appContext;
     private GlobalApplication appInstance;
     String currentUrl;
+    private static final String domain = "http://tedxhub.ted.com";
 
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -126,20 +127,30 @@ public class MainActivity extends Activity {
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                // initially hide the indicator (onPageStarted can handle it)
+                progress.setVisibility(View.GONE);
+
               if (url.endsWith("logout")) {
                   SessionManager session = new SessionManager(appContext);
                   session.logout();
-                  // Staring MainActivity
-                  Intent i = new Intent(appContext, LoginActivity.class);
-                  // Closing all the Activities
-                  i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                  // Add new Flag to start new Activity
-                  i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                  mWebView.clearCache(true);
+                  mWebView.clearHistory();
 
-                  // Staring Login Activity
-                  appContext.startActivity(i);
-                  finish();
+                  Utils.clearCookies(appContext);
+
+//                  // Staring MainActivity
+//                  Intent i = new Intent(appContext, LoginActivity.class);
+//                  // Closing all the Activities
+//                  i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//                  // Add new Flag to start new Activity
+//                  i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//                  // Staring Login Activity
+//                  appContext.startActivity(i);
+//                  finish();
+                  view.loadUrl(domain);
                   return true;
               }
               currentUrl = url;
@@ -147,22 +158,27 @@ public class MainActivity extends Activity {
               return true;
             }
 
-//            @Override
-//            public void onPageStarted(WebView view, String url, Bitmap favicon) {
-//              progress.setVisibility(View.VISIBLE);
-//              MainActivity.this.progress.setProgress(0);
-//              super.onPageStarted(view, url, favicon);
-//            }
-//
-//            // when finish loading page
-//            public void onPageFinished(WebView view, String url) {
-//            //                if(mProgress.isShowing()) {
-//            //                    mProgress.dismiss();
-//            //                }
-//              progress.setVisibility(View.GONE);
-//              MainActivity.this.progress.setProgress(100);
-//              super.onPageFinished(view, url);
-//            }
+            @Override
+            public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                // Chat app already has its own loading indicator
+                if (!url.startsWith(domain + "/chat")) {
+                    swipeView.setEnabled(true);
+                    progress.setVisibility(View.VISIBLE);
+                    MainActivity.this.progress.setProgress(0);
+                    super.onPageStarted(view, url, favicon);
+                }
+                else
+                {
+                    // disable swipe down refresh when user is on chat app
+                    swipeView.setEnabled(false);
+                }
+            }
+
+            // when finish loading page
+            public void onPageFinished(WebView view, String url) {
+
+                progress.setVisibility(View.GONE);
+            }
 
             public boolean onShowFileChooser(
                   WebView webView, ValueCallback<Uri[]> filePathCallback,
@@ -244,16 +260,7 @@ public class MainActivity extends Activity {
         extraHeaders.put(GlobalNames.SecuredToken,session.getApiKey());
         extraHeaders.put(GlobalNames.RememberMe,"1");
 
-
-        String caller = getIntent().getStringExtra("caller");
-        String viewUrl=String.format("%s%s",session.getAppUrl(),appInstance.SecuredLoginUrl);
-        if(caller!=null && caller.equals("LoginActivity"))
-        {
-            viewUrl= viewUrl+"?ForceLogout=1";
-        }
-        mWebView.loadUrl(viewUrl, extraHeaders);
-
-
+        mWebView.loadUrl(domain, extraHeaders);
 
 
 // Only enable swipeToRefresh if is mainWebView is scrolled to the top.
@@ -330,8 +337,6 @@ public class MainActivity extends Activity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
 }
 
 

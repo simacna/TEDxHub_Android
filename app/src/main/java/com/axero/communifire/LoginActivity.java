@@ -47,42 +47,51 @@ public class LoginActivity extends Activity {
         session = new SessionManager(appContext);
         setContentView(R.layout.login);
 
+        Intent i = new Intent(appContext, MainActivity.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Starting main Activity
+        appContext.startActivity(i);
+        finish();
         //session.logoutUser();
-        if (session.isLoggedIn()) {
-            // Staring MainActivity
-            Intent i = new Intent(appContext, MainActivity.class);
-            // Closing all the Activities
-            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            // Add new Flag to start new Activity
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-            // Staring Login Activity
-            appContext.startActivity(i);
-            finish();
-        } else {
-
-            setContentView(R.layout.login);
-
-            text_name = (EditText) findViewById(R.id.text_name);
-            text_password = (EditText) findViewById(R.id.text_password);
-            text_domain = (EditText) findViewById(R.id.text_domain);
-
-            String appUrl = session.getAppUrl();
-            String username = session.getUsername();
-
-            if (appUrl != null) {
-                text_domain.setText(appUrl);
-            }
-
-            if (username != null) {
-                text_name.setText(username);
-                text_password.requestFocus();
-            }
-
-
-        }
+//        if (session.isLoggedIn()) {
+//            // Staring MainActivity
+//            Intent i = new Intent(appContext, MainActivity.class);
+//            // Closing all the Activities
+//            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//            // Add new Flag to start new Activity
+//            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+//            // Staring Login Activity
+//            appContext.startActivity(i);
+//            finish();
+//        } else {
+//
+//            setContentView(R.layout.login);
+//
+//            text_name = (EditText) findViewById(R.id.text_name);
+//            text_password = (EditText) findViewById(R.id.text_password);
+//            text_domain = (EditText) findViewById(R.id.text_domain);
+//
+//            String appUrl = session.getAppUrl();
+//            String username = session.getUsername();
+//
+//            if (appUrl != null) {
+//                text_domain.setText(appUrl);
+//            }
+//
+//            if (username != null) {
+//                text_name.setText(username);
+//                text_password.requestFocus();
+//            }
+//
+//
+//        }
 
 
     }

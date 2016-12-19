@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="21.1.2"
-        sha1="399ce338ea77088c60bf2443ff2ac89ecea8035a">
+        sha1="08d68a7bbfb801b50e6f56cfb90fd1cf69620a72">
         <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_f424552d1292a447f5019b98bd9eb59c8656cd8c/classes.dex" />
     </item>
     <item
@@ -79,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="21.1.2"
-        sha1="4b87aa0967dfab14c023673c6d48d91918946be3">
+        sha1="3e037e40200d72a5c40c084c4df687b256ec6f07">
         <dex dex="/Git Projects/TEDxHub_Android/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_aa46e972bc27ee573d97af1e69bd0d7dc3c0d5b2/classes.dex" />
     </item>
     <item
