@@ -1,4 +1,4 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
 /**
  * Created by raghav on 29-01-2015.

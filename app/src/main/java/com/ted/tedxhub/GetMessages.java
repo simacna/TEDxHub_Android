@@ -1,4 +1,4 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
 import android.app.Notification;
 import android.app.NotificationManager;

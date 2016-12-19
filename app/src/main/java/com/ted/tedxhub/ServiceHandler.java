@@ -1,4 +1,4 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,7 +18,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.security.cert.X509Certificate;
 import java.util.List;
 
 import org.apache.http.HttpEntity;
@@ -45,7 +44,6 @@ import org.apache.http.util.EntityUtils;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLException;
 import javax.net.ssl.SSLPeerUnverifiedException;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;

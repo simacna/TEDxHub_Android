@@ -1,4 +1,4 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.util.Scanner;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,8 +1,7 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.security.Certificate;
 
 /**
  * Created with IntelliJ IDEA.

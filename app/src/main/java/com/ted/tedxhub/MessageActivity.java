@@ -1,14 +1,11 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.webkit.WebSettings;

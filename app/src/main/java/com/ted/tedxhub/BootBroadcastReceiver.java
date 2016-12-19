@@ -1,12 +1,9 @@
-package com.axero.communifire;
+package com.ted.tedxhub;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by raghav on 15-01-2015.
