@@ -56,20 +56,14 @@ public class GetNotifications extends AsyncTask<Void, Void, Void> {
         }
         pageLength = 10;
         String nurl = String.format(appInstance.NotificationsUrl, lastNotificationId, 1, pageLength);
-        String getNotificationUrl = String.format("%s%s", session.getAppUrl(), nurl);
-        String token = session.getApiKey();
-        if (token == null || token == "") {
-            return null;
-        }
+        notificationUrl = String.format("%s%s", MainActivity.domain, nurl);
 
-        notificationUrl = Utils.appendApiKey(getNotificationUrl, session.getApiKey());
-        notificationUrl = Utils.appendJsonFormatKey(notificationUrl);
-        String xml = serviceHandler.makeServiceCall(notificationUrl, ServiceHandler.GET);
+        String json = serviceHandler.makeServiceCall(notificationUrl, ServiceHandler.GET);
 
         Log.v("AlarmReceiver", "notificationUrl:" + notificationUrl);
 
         try {
-            JSONObject reader = new JSONObject(xml);
+            JSONObject reader = new JSONObject(json);
 
             JSONArray array = reader.getJSONArray(GlobalNames.ResponseData);
             if (array != null) {
@@ -87,8 +81,8 @@ public class GetNotifications extends AsyncTask<Void, Void, Void> {
 
             Notification.Builder nbuilder = new Notification.Builder(Context)
                     .setContentTitle(GlobalNames.NewNotifications)
-                    .setContentText(session.getAppName())
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentText(MainActivity.domain)
+                    .setSmallIcon(R.drawable.ic_tab)
                     .setLargeIcon(BitmapFactory.decodeResource(Context.getResources(), R.mipmap.ic_launcher))
                     .setContentIntent(pi);
 

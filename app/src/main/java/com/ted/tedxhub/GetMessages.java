@@ -56,14 +56,8 @@ public class GetMessages extends AsyncTask<Void, Void, Void> {
         }
         pageLength = 10;
         String nurl = String.format(appInstance.UnreadMessagesUrl, lastMessageID, 1, pageLength);
-        String url = String.format("%s%s", session.getAppUrl(), nurl);
-        String token = session.getApiKey();
-        if (token == null || token == "") {
-            return null;
-        }
+        messageUrl = String.format("%s%s", MainActivity.domain, nurl);
 
-        messageUrl = Utils.appendApiKey(url, session.getApiKey());
-        messageUrl = Utils.appendJsonFormatKey(messageUrl);
         String xml = serviceHandler.makeServiceCall(messageUrl, ServiceHandler.GET);
 
         Log.v("AlarmReceiver", "messageUrl:" + messageUrl);
@@ -87,8 +81,8 @@ public class GetMessages extends AsyncTask<Void, Void, Void> {
 
                 Notification.Builder nbuilder = new Notification.Builder(Context)
                         .setContentTitle(GlobalNames.NewMessages)
-                        .setContentText(session.getAppName())
-                        .setSmallIcon(R.mipmap.ic_launcher)
+                        .setContentText(MainActivity.domain)
+                        .setSmallIcon(R.drawable.ic_tab)
                         .setLargeIcon(BitmapFactory.decodeResource(Context.getResources(), R.mipmap.ic_launcher))
                         .setContentIntent(pi);
 

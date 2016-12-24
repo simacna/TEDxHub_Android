@@ -255,7 +255,7 @@ public class LoginActivity extends Activity {
             domain = text_domain.getText().toString().trim();
 
             String nurl = String.format(appInstance.ApplicationDetailsUrl);
-            String getNotificationUrl = String.format("%s%s", session.getAppUrl(), nurl);
+            String getNotificationUrl = String.format("%s%s", MainActivity.domain, nurl);
             String token = session.getApiKey();
             if (token == null || token.equals("")) {
                 return null;

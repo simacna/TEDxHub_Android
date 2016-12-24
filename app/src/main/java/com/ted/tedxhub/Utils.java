@@ -3,14 +3,25 @@ package com.ted.tedxhub;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Build;
+import android.provider.Settings;
+import android.util.Log;
 import android.util.Patterns;
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 /**
@@ -154,6 +165,76 @@ public final class Utils {
             cookieManager.removeSessionCookie();
             cookieSyncMngr.stopSync();
             cookieSyncMngr.sync();
+        }
+    }
+
+    public void setIfLoggedIn(Context context)
+    {
+        new  LoginStatus(context).execute();
+    }
+
+    public static boolean isJSONValid(String test) {
+        try {
+            new JSONObject(test);
+        } catch (JSONException ex) {
+            // edited, to include @Arthur's comment
+            // e.g. in case JSONArray is valid as well...
+            try {
+                new JSONArray(test);
+            } catch (JSONException ex1) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public class LoginStatus extends AsyncTask<Void, Void, String> {
+
+        private final String USER_AGENT = "Mozilla/5.0";
+        private SessionManager session;
+
+        public LoginStatus(Context appContext)
+        {
+            session = new SessionManager(appContext);
+        }
+
+        @Override
+        protected String doInBackground(Void... strings) {
+            ServiceHandler serviceHandler = new ServiceHandler();
+
+            String getMeUrl = String.format("%s%s", MainActivity.domain, GlobalApplication.getInstance().GetMeUrl);
+            String json = serviceHandler.makeServiceCall(getMeUrl, ServiceHandler.GET);
+
+            Log.v("LoginStatus", "GetMeUrl: " + getMeUrl);
+            return json;
+        }
+
+        @Override
+        protected void onPostExecute(String json) {
+            if (json == null || json.isEmpty())
+            {
+                session.setIsLogin(false);
+            }
+
+            try {
+                if (isJSONValid(json)) {
+                    JSONObject reader = new JSONObject(json);
+                    int userID = reader.getInt("UserID");
+
+                    if (userID > 0) {
+                        session.setIsLogin(true);
+                    }
+                    else {
+                        session.setIsLogin(false);
+                    }
+                }
+                else {
+                    session.setIsLogin(false);
+                }
+            } catch (JSONException e) {
+                session.setIsLogin(false);
+                e.printStackTrace();
+            }
         }
     }
 }

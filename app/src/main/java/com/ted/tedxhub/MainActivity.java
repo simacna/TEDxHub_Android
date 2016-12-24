@@ -1,6 +1,7 @@
 package com.ted.tedxhub;
 
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -38,9 +39,10 @@ public class MainActivity extends Activity {
     private ProgressBar progress;
     private SessionManager session;
     private Context appContext;
+    private Context mainContext;
     private GlobalApplication appInstance;
-    String currentUrl;
-    private static final String domain = "http://tedxhub.ted.com";
+    public static String currentUrl;
+    public static final String domain = "https://tedx52.communifire.com";
 
 
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -50,6 +52,8 @@ public class MainActivity extends Activity {
 
     private ValueCallback<Uri[]> mFilePathCallback;
     private String mCameraPhotoPath;
+
+    public static String takeToUrl;
 
     @Override
     public void onActivityResult (int requestCode, int resultCode, Intent data) {
@@ -87,7 +91,12 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         final SwipeRefreshLayout swipeView =(SwipeRefreshLayout)findViewById(R.id.swipe);
 
+        mainContext = MainActivity.this;
+
         appContext = getApplicationContext();
+        Utils utils = new Utils();
+        utils.setIfLoggedIn(appContext);
+
         appInstance = GlobalApplication.getInstance();
         session = new SessionManager(appContext);
         mWebView = (WebView) findViewById(R.id.activity_main_webview);
@@ -150,7 +159,10 @@ public class MainActivity extends Activity {
 
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
+                takeToUrl = null;
                 // Chat app already has its own loading indicator
+                Utils utils = new Utils();
+                utils.setIfLoggedIn(appContext);
                 if (!url.startsWith(domain + "/chat")) {
                     swipeView.setEnabled(true);
                     progress.setVisibility(View.VISIBLE);
@@ -166,8 +178,12 @@ public class MainActivity extends Activity {
 
             // when finish loading page
             public void onPageFinished(WebView view, String url) {
-
                 progress.setVisibility(View.GONE);
+
+                // Alarm work
+                if (session.isLoggedIn()) {
+                    AlarmHelper.setAlarm(mainContext);
+                }
             }
 
             public boolean onShowFileChooser(
@@ -235,13 +251,6 @@ public class MainActivity extends Activity {
                 }
             });
 
-
-
-
-        // Alarm work
-
-        AlarmHelper.setAlarm(this);
-
         Context appContext = getApplicationContext();
         SessionManager session=new SessionManager(appContext);
         GlobalApplication appInstance = GlobalApplication.getInstance();
@@ -250,8 +259,12 @@ public class MainActivity extends Activity {
         extraHeaders.put(GlobalNames.SecuredToken,session.getApiKey());
         extraHeaders.put(GlobalNames.RememberMe,"1");
 
-        mWebView.loadUrl(domain, extraHeaders);
-
+        if (takeToUrl == null || takeToUrl.isEmpty()) {
+            mWebView.loadUrl(domain, extraHeaders);
+        }
+        else {
+            mWebView.loadUrl(takeToUrl, extraHeaders);
+        }
 
 // Only enable swipeToRefresh if is mainWebView is scrolled to the top.
         mWebView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {

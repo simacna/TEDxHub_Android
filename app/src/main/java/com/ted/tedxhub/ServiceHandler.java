@@ -12,6 +12,7 @@ import android.annotation.TargetApi;
 import android.net.SSLCertificateSocketFactory;
 import android.os.Build;
 import android.util.Log;
+import android.webkit.CookieManager;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -24,6 +25,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -110,6 +112,8 @@ public class ServiceHandler {
             HttpEntity httpEntity = null;
             HttpResponse httpResponse = null;
 
+            String cookies = CookieManager.getInstance().getCookie(url);
+
 // Checking http request method type
             if (method == POST) {
                 HttpPost httpPost = new HttpPost(url);
@@ -118,6 +122,7 @@ public class ServiceHandler {
                     httpPost.setEntity(new UrlEncodedFormEntity(params));
                 }
 
+                httpPost.setHeader("Cookie", cookies);
                 httpResponse = httpClient.execute(httpPost);
 
             } else if (method == GET) {
@@ -129,6 +134,7 @@ public class ServiceHandler {
                 }
                 HttpGet httpGet = new HttpGet(url);
 
+                httpGet.setHeader("Cookie", cookies);
                 httpResponse = httpClient.execute(httpGet);
 
             }

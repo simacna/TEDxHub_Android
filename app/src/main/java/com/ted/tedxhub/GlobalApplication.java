@@ -30,6 +30,7 @@ public class GlobalApplication extends Application {
     }
     public Integer NotificationPingInterval;
     public String ApplicationDetailsUrl;
+    public String GetMeUrl;
 
     @Override
     public void onCreate() {
@@ -47,15 +48,16 @@ public class GlobalApplication extends Application {
         ApplicationServicesUrl= String.format("%s/services", ApplicationUrl);
         UserServiceUrl= String.format("%s/userservice.svc", ApplicationServicesUrl);
         ValidateCredentialsUrl= String.format("%s/users/user/restapikey?username=%%s&password=%%s&format=json", UserServiceUrl);
-        CaseAddUrl = String.format("%s/issuetrackerservice.svc/cases", ApplicationServicesUrl);
-        CaseAttachmentAddUrl= String.format("%s?issueid=%%s&fileName=%%s", String.format("%s/issuetrackerservice.svc/attachment", ApplicationServicesUrl));
-        NewsFeedUrl = String.format("%s/CommonService.svc/activity",ApplicationServicesUrl);
-        NotificationsUrl = String.format("%s/NotificationsService.svc/notifications/unread?lastNotificationID=%%s&startPage=%%s&numberOfRecords=%%s", ApplicationServicesUrl);
-        UnreadMessagesUrl = String.format("%s/InboxService.svc/messages/unread?lastMessageID=%%s&startPage=%%s&numberOfRecords=%%s", ApplicationServicesUrl);
-        SecuredLoginUrl = String.format("%s/securedlogin", ApplicationUrl);
+        //CaseAddUrl = String.format("%s/issuetrackerservice.svc/cases", ApplicationServicesUrl);
+        //CaseAttachmentAddUrl= String.format("%s?issueid=%%s&fileName=%%s", String.format("%s/issuetrackerservice.svc/attachment", ApplicationServicesUrl));
+        //NewsFeedUrl = String.format("%s/CommonService.svc/activity",ApplicationServicesUrl);
+        NotificationsUrl = String.format("%s/api/notifications/unread?lastNotificationID=%%s&startPage=%%s&numberOfRecords=%%s", ApplicationUrl);
+        UnreadMessagesUrl = String.format("%s/api/messages/unread?lastMessageID=%%s&startPage=%%s&numberOfRecords=%%s", ApplicationUrl);
+        //SecuredLoginUrl = String.format("%s/securedlogin", ApplicationUrl);
         MyAccountNotificationsUrl = String.format("%s/myaccount/notifications", ApplicationUrl);
-        MyAccountMessagesUrl = String.format("%s/chat/threads/", ApplicationUrl);
-        ApplicationDetailsUrl = String.format("%s/CommonService.svc/application/details", ApplicationServicesUrl);
+        MyAccountMessagesUrl = String.format("%s/chat#/threads/", ApplicationUrl);
+        ApplicationDetailsUrl = String.format("%s/api/application/details", ApplicationUrl);
+        GetMeUrl = String.format("%s/api/users/me", ApplicationUrl);
     }
 }
 

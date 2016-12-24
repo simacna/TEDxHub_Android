@@ -2,6 +2,7 @@ package com.ted.tedxhub;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -84,7 +85,20 @@ public class NotificationActivity extends Activity {
 
         });
 
-        mWebView.loadUrl(String.format("%s%s", session.getAppUrl(), appInstance.MyAccountNotificationsUrl));
+        //mWebView.loadUrl(String.format("%s%s", MainActivity.domain, appInstance.MyAccountNotificationsUrl));
+
+        MainActivity.takeToUrl = String.format("%s%s", MainActivity.domain, appInstance.MyAccountNotificationsUrl);
+
+        Intent i = new Intent(appContext, MainActivity.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Starting main Activity
+        appContext.startActivity(i);
+        finish();
 
         // Only enable swipeToRefresh if is mainWebView is scrolled to the top.
         mWebView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {

@@ -112,6 +112,14 @@ public class SessionManager {
         return user;
     }
 
+    public void setIsLogin(Boolean isLogin)
+    {
+        editor.putBoolean(IS_LOGIN, isLogin);
+
+        // commit changes
+        editor.commit();
+    }
+
     public String getAppName() {
 
         return pref.getString(KEY_APPNAME, null);
@@ -166,7 +174,6 @@ public class SessionManager {
         // commit changes
         editor.commit();
     }
-
 
     public String getApiKey() {
         return pref.getString(KEY_API, null);

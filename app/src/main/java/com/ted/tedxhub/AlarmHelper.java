@@ -17,7 +17,7 @@ public class AlarmHelper {
         alarmIntent.setAction(Intent.ACTION_SEND);
         AlarmManager manager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, alarmIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        int interval = appInstance.NotificationPingInterval;;
+        int interval = appInstance.NotificationPingInterval;
         manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), interval, pendingIntent);
     }
 

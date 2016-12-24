@@ -3,6 +3,7 @@ package com.ted.tedxhub;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -84,7 +85,19 @@ public class MessageActivity extends Activity {
 
         });
         //Log.v("Message final url", String.format("%s%s%s", session.getAppUrl(), appInstance.MyAccountMessagesUrl, session.getRecentThreadID()));
-        mWebView.loadUrl(String.format("%s%s%s", session.getAppUrl(), appInstance.MyAccountMessagesUrl, session.getRecentThreadID()));
+        MainActivity.takeToUrl = String.format("%s%s%s", MainActivity.domain, appInstance.MyAccountMessagesUrl, session.getRecentThreadID());
+        //mWebView.loadUrl(takeToUrl);
+
+        Intent i = new Intent(appContext, MainActivity.class);
+        // Closing all the Activities
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        // Add new Flag to start new Activity
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        // Starting main Activity
+        appContext.startActivity(i);
+        finish();
 
         // Only enable swipeToRefresh if is mainWebView is scrolled to the top.
         mWebView.getViewTreeObserver().addOnScrollChangedListener(new ViewTreeObserver.OnScrollChangedListener() {
